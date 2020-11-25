@@ -1,13 +1,11 @@
 var mongoose = require('mongoose');
-var UserSchema = new mongoose.Schema({
+var PesertaSchema = new mongoose.Schema({
     username : {type: String, required:true},
     password : {type: String, required:true},
     email : {type: String, required:true},
-    subDistirict: {type: String, require: true},
-    role : {type: String},
-    id_master: [
-        {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
-    ],
+    birthdate: { type: Date, required: true},
+    phoneNumber: {type: Number, required: true},
+    role : {type: String, default: 'peserta'},
     id_tournament : [
         {type: mongoose.Schema.Types.ObjectId, ref: 'Tournament'}
     ],
@@ -17,4 +15,4 @@ var UserSchema = new mongoose.Schema({
         default: false
     }
 });
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Peserta', PesertaSchema);

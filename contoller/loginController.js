@@ -11,7 +11,7 @@ class LoginMaster {
         }
         const{ email, password} = req.body
         try{
-          const userName = await User.findOne({email})
+          const userName = await User.findOne({email}).populate('id_tournament')
           if(!userName){
             return res.status(400).json({msg:"User Invalid"})
           }
@@ -23,7 +23,8 @@ class LoginMaster {
             user : {
               id : userName.id,
               role: userName.role,
-              subDistirict: userName.subDistirict
+              subDistirict: userName.subDistirict,
+              id_tournament: userName.id_tournament
             }
           }
           jwt.sign(token, 'jwtSecret', { expiresIn: "10h" }, (err, tokens) =>{

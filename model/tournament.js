@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 const TournamentSchema = new mongoose.Schema({
     NamaTournament : {
-        type: 'String',
+        type: String,
         required: true
     },
     TypeTournament : {
-        type: 'String',
+        type: String,
         required: true
     },
     JumlahPeserta : {
@@ -14,16 +14,33 @@ const TournamentSchema = new mongoose.Schema({
         max: 100
     },
     SubDistrict : {
-        type: 'String',
+        type: String,
         required: true
     },
     UsiaTournament : {
-        type: 'String',
+        type: String,
+        required: true
+    },
+    CodeTournament : {
+        type: String,
         required: true
     },
     Id_Panitia : [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
-    }]
+    }],
+    Deskripsi : {
+        type: String,
+        required: true
+    },
+    Id_Peserta : [{
+        type: mongoose.Schema.Types.ObjectId, ref: 'User'
+    }],
+    Is_active:{
+        type: Boolean,
+        required: true,
+        default: false
+    }
+
 
 })
 module.exports = mongoose.model('Tournament', TournamentSchema);
