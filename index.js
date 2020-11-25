@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoDbConnection()
 app.use(routes)
-// app.get('/', (req, res, next) => {
-//     res.send('Hello World')
-// })
+app.get('/', (req, res, next) => {
+    res.send('Hello World')
+})
 app.listen(port, () => console.log(`Listening on port ${port}`));
