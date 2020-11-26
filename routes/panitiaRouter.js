@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const userController = require('../contoller/panitiaController')
 const auth = require('../middleware/auth')
-router.post('/user', auth, userController.createPanitia)
+const check = require('../middleware/checkRole')
+
+router.post('/user', auth, check('master'))
 
 
 module.exports = router

@@ -1,18 +1,20 @@
-const user = require('../model/user')
+const peserta = require('../model/peserta')
 const bcrypt = require ('bcryptjs');
 const saltRounds = 10;
-const pesertaDao = require('../dao/pesertaDao')
+const pesertaDao = require('../dao/pesertaDao');
+const jwt = require('jsonwebtoken');
+const sendEmail = require('../utils/sendMail')
 
 class pesertaController {
       static createPeserta(req, res, next) {
-         console.log('xxx', req.body)
          bcrypt.hash(req.body.password, saltRounds, function(err , hash){
-           const {username, email, roles, subDistirict} = req.body
-           user.create({
+           const {username, email, roles, birthdate, phoneNumber} = req.body
+           peserta.create({
             username : username,
             password : hash,
             email : email,
-            subDistirict: subDistirict,
+            birthdate: birthdate,
+            phoneNumber: phoneNumber,
             role : roles,
            })
            .then((result)=>{
@@ -58,6 +60,36 @@ class pesertaController {
                 })
            })
          }
+      }
+      static async  forgotPassword (req, res, next){
+         const { email } = req.body
+         const participant = await peserta.findOne({email: email})
+
+         if(!participant){
+            return res.status(200).json({
+               status: false,
+               msg: "Email Tidak Tersedia"
+            })
+         }
+         const tokens = {
+            user : {
+              id : participant.id,
+              role: participant.role,
+            }
+          }
+         const token = jwt.sign(tokens, 'jwtSecret', { expiresIn: "10h" })
+         await peserta.updateOne({reset_password: token})
+
+         const message = {
+            from: `Petrus`,
+            to: email ,
+            subject: 'Reset Password',
+            text:`<p>${process.env.CLIENT_URL}/test/${token}`
+         };
+         sendEmail(message)
+         return res.status(200).json({
+            msg: 'Berhasil'
+         })
       }
 }
 

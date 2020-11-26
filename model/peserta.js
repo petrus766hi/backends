@@ -13,6 +13,10 @@ var PesertaSchema = new mongoose.Schema({
         type: Boolean,
         // required: true,
         default: false
+    },
+    reset_password:{
+        type: String,
+        default: ''
     }
 });
 module.exports = mongoose.model('Peserta', PesertaSchema);
