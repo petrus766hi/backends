@@ -4,7 +4,7 @@ const tournamentContoller = require('../contoller/tournamentController')
 const auth = require('../middleware/auth')
 const test = require('../middleware/testcopy')
 router.post('/register', auth, tournamentContoller.CreateTournament)
-router.get('/tournament', tournamentContoller.getAllTournament)
+router.get('/tournament', tournamentContoller.getAll)
 router.put('/tournament/:id', tournamentContoller.updateTournament)
 // router.post('/tournament', test)
 
