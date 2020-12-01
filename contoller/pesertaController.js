@@ -61,6 +61,28 @@ class pesertaController {
            })
          }
       }
+      static changePeserta(req, res, next){
+         const id = req.params.id
+         const username = {
+            username: req.body
+         }
+            pesertaDao.updatePeserta(id, username)
+            .then((result)=>{
+               res.status(201).json({
+                   success: true,
+                   msg: 'Update Peserta',
+                   data: result
+               })
+           })
+           .catch((err)=>{
+               res.status(500).json({
+                   success: false,
+                   msg: 'Gagal Update Peserta',
+                   data: err
+                })
+           })
+
+      }
       static async  forgotPassword (req, res, next){
          const { email } = req.body
          const participant = await peserta.findOne({email: email})

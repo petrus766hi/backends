@@ -49,8 +49,19 @@ class TournamentController {
             }
         }
     }
-    static getAllTournament(req, res, next){
-        tournamentDao.getAllTournament()
+    static getAll(req, res, next){
+        const currentPage = parseInt(req.query.currentPage) || 1
+        const perPage = parseInt(req.query.perPage) || 5
+        let sortBy = req.query.sortBy
+            ? req.query.sortBy
+            : 'asc';
+        let query = {
+            perPage,
+            currentPage,
+            sortBy
+
+        };
+        tournamentDao.getAll(query)
         .then((result)=>{
             res.status(200).json({
                 success: true,

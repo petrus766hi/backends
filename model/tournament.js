@@ -30,7 +30,7 @@ const TournamentSchema = new mongoose.Schema({
     }],
     Deskripsi : {
         type: String,
-        required: true
+        // required: true
     },
     Id_Peserta : [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'

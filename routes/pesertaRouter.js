@@ -6,6 +6,7 @@ const auth = require('../middleware/auth')
 
 router.post('/register', pesertaController.createPeserta)
 router.put('/update/:id',auth,pesertaController.updatePeserta)
+router.put('/update/:id',auth,pesertaController.changePeserta)
 router.post('/login', loginController.LoginPeserta)
 router.put('/forgotpassword', pesertaController.forgotPassword)
 
