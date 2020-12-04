@@ -1,7 +1,7 @@
 const user = require('../model/user')
 const bcrypt = require ('bcryptjs');
 const saltRounds = 10;
-
+const panitiaDao = require('../dao/panitiaDao')
 class userController {
     static createPanitia(req, res, next) {
        const {id, role, subDistirict} = req.user
@@ -34,9 +34,24 @@ class userController {
            })
         })
 
-       }
-
-
+      }
+    }
+    static getAll(req, res, next){
+         panitiaDao.getPanitia()
+         .then((result) =>{
+            res.status(201).json({
+               success: true,
+               msg: 'Sukses Membuat User Panitia',
+               data: result
+            })
+         })
+         .catch((err)=>{
+            res.status(500).json({
+               success: false,
+               msg: 'Gagal Membuat User Panitia',
+               data: err
+            })
+        })
     }
 }
 

@@ -12,10 +12,10 @@ class pesertaController {
            peserta.create({
             username : username,
             password : hash,
-            email : email,
-            birthdate: birthdate,
-            phoneNumber: phoneNumber,
-            role : roles,
+            // email : email,
+            // birthdate: birthdate,
+            // phoneNumber: phoneNumber,
+            // role : roles,
            })
            .then((result)=>{
                res.status(201).json({
