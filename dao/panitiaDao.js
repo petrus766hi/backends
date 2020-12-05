@@ -12,13 +12,22 @@ class panitiaDao {
         })
     }
     static getPanitiaId(data){
-        console.log('xxx', data)
         return new Promise((resolve, reject)=>{
             panitia.findById(data).exec((err,panitia) =>{
                 if (err || !panitia) {
                     return reject({error: "Panitia Not Found!!!"});
                 }
                 return resolve({panitia});
+            })
+        })
+    }
+    static updatePanitia (query, data){
+        return new Promise((resolve, reject)=>{
+            panitia.findByIdAndUpdate(query, data, {new: true}, (err, peserta)=>{
+                if(err){
+                    return reject({error: "Error"})
+                }
+                return resolve({panitia})
             })
         })
     }

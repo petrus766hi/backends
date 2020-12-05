@@ -70,7 +70,33 @@ class userController {
             data: err
          })
      })
- }
+   }
+   static updatePanitia(req, res, next){
+      const {role} = req.user
+      const id = req.params.id
+      const active = {
+         is_active_peserta: req.body
+      }
+      if(role != 'master'){
+         return res.status(200).json({msg:'Kamu bukan Master, silahkan hubungi panitia nya'})
+      }else{
+         panitiaDao.updatePanitia(id, active)
+         .then((result)=>{
+            res.status(201).json({
+                success: true,
+                msg: 'Update Panitia',
+                data: result
+            })
+        })
+        .catch((err)=>{
+            res.status(500).json({
+                success: false,
+                msg: 'Gagal Update Panitia',
+                data: err
+             })
+        })
+      }
+   }
 }
 
 module.exports = userController
