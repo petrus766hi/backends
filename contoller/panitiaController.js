@@ -75,13 +75,16 @@ class userController {
       const {role} = req.user
       const id = req.params.id
       const active = {
-         is_active_peserta: req.body
+         is_active_peserta: req.body.is_active_peserta
       }
+      console.log('xxx', role)
       if(role != 'master'){
          return res.status(200).json({msg:'Kamu bukan Master, silahkan hubungi panitia nya'})
       }else{
-         panitiaDao.updatePanitia(id, active)
+         panitiaDao.updatePanitiaId(id, active)
+
          .then((result)=>{
+            console.log('ress', result)
             res.status(201).json({
                 success: true,
                 msg: 'Update Panitia',
