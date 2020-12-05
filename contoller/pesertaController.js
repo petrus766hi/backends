@@ -61,6 +61,7 @@ class pesertaController {
            })
          }
       }
+
       static changePeserta(req, res, next){
          const id = req.params.id
          const username = {
@@ -113,6 +114,23 @@ class pesertaController {
             msg: 'Berhasil'
          })
       }
+      static getAll(req, res, next){
+         pesertaDao.getPeserta()
+         .then((result) =>{
+            res.status(201).json({
+               success: true,
+               msg: 'Get All Peserta',
+               data: result
+            })
+         })
+         .catch((err)=>{
+            res.status(500).json({
+               success: false,
+               msg: 'Gagal Get All Peserta',
+               data: err
+            })
+        })
+    }
 }
 
 module.exports = pesertaController

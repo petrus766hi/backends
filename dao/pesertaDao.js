@@ -11,6 +11,16 @@ class pesertaDao {
             })
         })
     }
+    static getPeserta(){
+        return new Promise((resolve, reject)=>{
+            peserta.find().exec((err,peserta) =>{
+                if (err || !peserta) {
+                    return reject({error: "peserta Not Found!!!"});
+                }
+                return resolve(peserta);
+            })
+        })
+    }
 }
 
 module.exports = pesertaDao
