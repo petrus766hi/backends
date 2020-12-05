@@ -53,6 +53,24 @@ class userController {
             })
         })
     }
+    static getPanitia(req, res, next){
+      const id = req.params.id
+      panitiaDao.getPanitiaId(id)
+      .then((result) =>{
+         res.status(201).json({
+            success: true,
+            msg: 'Get Panitia',
+            data: result
+         })
+      })
+      .catch((err)=>{
+         res.status(500).json({
+            success: false,
+            msg: 'Gagal Get Panitia',
+            data: err
+         })
+     })
+ }
 }
 
 module.exports = userController
