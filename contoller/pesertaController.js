@@ -107,7 +107,7 @@ class pesertaController {
             from: `Petrus`,
             to: email ,
             subject: 'Reset Password',
-            html:`<a href="http://localhost:4200/home">Masuk gan </a>`
+            html:`<a href="http://localhost:4200/change_password">Masuk gan </a>`
          };
          sendEmail(message)
          return res.status(200).json({
