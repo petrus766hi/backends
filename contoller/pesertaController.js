@@ -101,8 +101,7 @@ class pesertaController {
             }
           }
          const token = jwt.sign(tokens, 'jwtSecret', { expiresIn: "10h" })
-         await peserta.updateOne({reset_password: token})
-
+         await peserta.findByIdAndUpdate(tokens.user.id,{reset_password: token})
          const message = {
             from: `Petrus`,
             to: email ,
@@ -110,6 +109,7 @@ class pesertaController {
             html:`<a href="http://localhost:4200/change_password">Masuk gan </a>`
          };
          sendEmail(message)
+
          return res.status(200).json({
             msg: 'Berhasil'
          })
@@ -130,7 +130,20 @@ class pesertaController {
                data: err
             })
         })
-    }
+      }
+      static async  resetPassword (req, res, next){
+         const { password, token } = req.body
+         const user = await peserta.findOne({reset_password: token})
+
+         if(user){
+            const hashPassword = await bcrypt.hash(password, 10)
+            user.password = hashPassword
+            await user.save()
+            return res.status(200).json({
+               msg: 'Berhasil'
+            })
+         }
+      }
 }
 
 module.exports = pesertaController

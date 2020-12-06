@@ -20,7 +20,7 @@ var PesertaSchema = new mongoose.Schema({
         default: false
     },
     reset_password:{
-        type: String,
+        data: String,
         default: ''
     }
 });

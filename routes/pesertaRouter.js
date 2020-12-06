@@ -9,6 +9,7 @@ router.put('/update/:id',auth,pesertaController.updatePeserta)
 router.put('/update/:id',auth,pesertaController.changePeserta)
 router.post('/login', loginController.LoginPeserta)
 router.put('/forgotpassword', pesertaController.forgotPassword)
+router.put('/resetpassword', pesertaController.resetPassword)
 router.get('/getall', pesertaController.getAll)
 
 module.exports = router
