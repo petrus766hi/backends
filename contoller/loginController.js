@@ -2,6 +2,7 @@ const bcrypt = require ('bcryptjs');
 const jwt = require('jsonwebtoken')
 const {check, validationResult} = require ('express-validator');
 const User = require ('../model/user');
+const Peserta = require ('../model/peserta');
 
 class LoginMaster {
     static async Login (req,res) {
@@ -53,7 +54,8 @@ class LoginMaster {
       }
       const{ email, password} = req.body
       try{
-        const userName = await User.findOne({email})
+        const userName = await Peserta.findOne({email})
+        console.log
         if(!userName){
           return res.status(400).json({msg:"Peserta Invalid"})
         }
