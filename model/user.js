@@ -4,7 +4,11 @@ var UserSchema = new mongoose.Schema({
     password : {type: String, required:true},
     email : {type: String, required:true},
     subDistirict: {type: String, require: true},
-    role : {type: String},
+    role : {
+        type: String,
+        enum : ['master','panitia'],
+        default: 'panitia'
+    },
     id_master: [
         {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
     ],
