@@ -5,6 +5,7 @@ class TournamentController {
     static CreateTournament (req, res, next){
         const { NamaTournament, TypeTournament, JumlahPeserta, UsiaTournament,CodeTournament } = req.body
         const {role, id, subDistirict,id_tournament} = req.user
+        console.log('id_tournament', id_tournament)
         const checkTournament = id_tournament.filter((e)=> {
           return e.CodeTournament === req.body.CodeTournament
         }).length

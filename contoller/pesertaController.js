@@ -107,7 +107,7 @@ class pesertaController {
             from: `Petrus`,
             to: email ,
             subject: 'Reset Password',
-            text:`<p>${process.env.CLIENT_URL}/test/${token}`
+            html:`<p>${process.env.CLIENT_URL}/change_password/${token}`
          };
          sendEmail(message)
          return res.status(200).json({
