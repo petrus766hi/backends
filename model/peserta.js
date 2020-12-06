@@ -5,7 +5,12 @@ var PesertaSchema = new mongoose.Schema({
     email : {type: String, required:true},
     birthdate: { type: Date, required: true},
     phoneNumber: {type: Number, required: true},
-    role : {type: String, default: 'peserta'},
+    role : {
+        type: String,
+        type: String,
+        enum : ['peserta'],
+        default: 'peserta'
+    },
     id_tournament : [
         {type: mongoose.Schema.Types.ObjectId, ref: 'Tournament'}
     ],
