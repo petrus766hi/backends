@@ -111,7 +111,8 @@ class pesertaController {
          sendEmail(message)
 
          return res.status(200).json({
-            msg: 'Berhasil'
+           status: true,
+           msg: 'Berhasil Merubah Password'
          })
       }
       static getAll(req, res, next){
