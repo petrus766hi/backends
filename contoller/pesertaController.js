@@ -141,6 +141,7 @@ class pesertaController {
             user.password = hashPassword
             await user.save()
             return res.status(200).json({
+               status: true,
                msg: 'Berhasil'
             })
          }
