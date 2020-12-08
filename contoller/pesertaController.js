@@ -174,9 +174,8 @@ class pesertaController {
         })
       }
       static async  changePassword (req, res, next){
-         const { password , token  } = req.body
-         const user = await peserta.findOne({token: token})
-
+         const { password , token, email  } = req.body
+         const user = await peserta.findOne({email:  email})
          if(user){
             const hashPassword = await bcrypt.hash(password, 10)
             user.password = hashPassword
@@ -184,6 +183,11 @@ class pesertaController {
             return res.status(200).json({
                status: true,
                msg: 'Berhasil'
+            })
+         }else{
+            return res.status(404).json({
+               status: true,
+               msg: 'User Not Found '
             })
          }
       }
