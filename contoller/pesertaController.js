@@ -173,6 +173,20 @@ class pesertaController {
              })
         })
       }
+      static async  changePassword (req, res, next){
+         const { password , token  } = req.body
+         const user = await peserta.findOne({token: token})
+
+         if(user){
+            const hashPassword = await bcrypt.hash(password, 10)
+            user.password = hashPassword
+            await user.save()
+            return res.status(200).json({
+               status: true,
+               msg: 'Berhasil'
+            })
+         }
+      }
 }
 
 module.exports = pesertaController
