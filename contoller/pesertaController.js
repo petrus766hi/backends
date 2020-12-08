@@ -2,6 +2,7 @@ const peserta = require('../model/peserta')
 const bcrypt = require ('bcryptjs');
 const saltRounds = 10;
 const pesertaDao = require('../dao/pesertaDao');
+const tournamentDao = require('../dao/tournamentDao');
 const jwt = require('jsonwebtoken');
 const sendEmail = require('../utils/sendMail')
 
@@ -106,7 +107,7 @@ class pesertaController {
             from: `Petrus`,
             to: email ,
             subject: 'Reset Password',
-            html:`<a href="http://localhost:4200/change_password/${token}">Masuk gan </a>`
+            html:`<a href="http://localhost:4200/reset_password/${token}">Masuk gan </a>`
          };
          sendEmail(message)
 
@@ -145,6 +146,32 @@ class pesertaController {
                msg: 'Berhasil'
             })
          }
+      }
+      static registerPeserta2Tournament (req, res, next){
+      let query = req.params.id
+      console.log(req.user.id)
+        let tourObj ={
+            id : req.user.id,
+            name : req.body.name,
+            fase1: req.body.fase1,
+            fase2: req.body.fase2,
+            fase3: req.body.fase3
+        }
+        tournamentDao.updatePesertas(query, tourObj)
+        .then((result)=>{
+            res.status(201).json({
+                success: true,
+                msg: 'Update Peserta',
+                data: result
+            })
+        })
+        .catch((err)=>{
+            res.status(500).json({
+                success: false,
+                msg: 'Gagal Update Peserta',
+                data: err
+             })
+        })
       }
 }
 

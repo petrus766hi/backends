@@ -22,6 +22,14 @@ var PesertaSchema = new mongoose.Schema({
     reset_password:{
         data: String,
         default: ''
-    }
+    },
+    result:[
+        {
+            fase1: Number,
+            fase2: Number,
+            fase3: Number,
+            default:0
+        }
+    ]
 });
 module.exports = mongoose.model('Peserta', PesertaSchema);

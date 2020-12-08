@@ -47,6 +47,18 @@ class tournamentDao {
 
         })
     }
+    static updatePesertas (query, tourObj){
+        return new Promise((resolve, reject) =>{
+            tournament.findOneAndUpdate({_id:{$in: query}}, {$push: {Id_Peserta: [{id: tourObj.id}]}}, {upsert: true} ,
+                (err, tour)=>{
+                if(err){
+                    return reject({error: "Error"})
+                }
+                return resolve(tour)
+            })
+
+        })
+    }
 }
 
 module.exports = tournamentDao

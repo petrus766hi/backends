@@ -33,7 +33,13 @@ const TournamentSchema = new mongoose.Schema({
         // required: true
     },
     Id_Peserta : [{
-        type: mongoose.Schema.Types.ObjectId, ref: 'User'
+        id : {
+            type: mongoose.Schema.Types.ObjectId, ref: 'Peserta'
+        },
+        name: { type: String, },
+        fase1: {type: Number, default:0},
+        fase2: {type: Number, default:0},
+        fase3: {type: Number, default:0},
     }],
     Is_active:{
         type: Boolean,

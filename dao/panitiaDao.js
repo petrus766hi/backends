@@ -23,7 +23,7 @@ class panitiaDao {
     }
     static updatePanitiaId (query, data){
         return new Promise((resolve, reject)=>{
-            panitia.findByIdAndUpdate(query, data, {new: true}, (err, panitia)=>{
+            panitia.findByIdAndUpdate(query, data, {upsert: true}, (err, panitia)=>{
                 if(err){
                     return reject({error: "Error"})
                 }
