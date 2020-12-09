@@ -1,7 +1,7 @@
-const peserta = require('../model/user')
+const peserta = require('../model/peserta')
 
 class pesertaDao {
-    static updatePeserta (query, data){
+    static changePeserta (query, data){
         return new Promise((resolve, reject)=>{
             peserta.findByIdAndUpdate(query, data, {upsert: true}, (err, peserta)=>{
                 if(err){

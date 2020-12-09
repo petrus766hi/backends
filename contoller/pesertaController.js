@@ -65,11 +65,11 @@ class pesertaController {
 
       static changePeserta(req, res, next){
          const id = req.params.id
-         const username = {
-            username: req.body,
-            email: req.body
+         const obj = {
+            username: req.body.username,
+            email: req.body.email
          }
-            pesertaDao.updatePeserta(id, username)
+            pesertaDao.changePeserta(id, obj)
             .then((result)=>{
                res.status(201).json({
                    success: true,
