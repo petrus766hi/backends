@@ -127,7 +127,7 @@ class TournamentController {
             res.status(201).json({
                 success: true,
                 msg: 'Get Tournament',
-                data: result
+                data: result.Id_Peserta[0]
             })
         })
         .catch((err)=>{

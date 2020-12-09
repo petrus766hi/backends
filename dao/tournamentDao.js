@@ -60,7 +60,7 @@ class tournamentDao {
     }
     static updateScore (query, tourObj){
         return new Promise((resolve, reject) =>{
-            tournament.findOneAndUpdate({"Id_Peserta._id":"5fd00c3cdf27e91c6c411304"}, {$set:{ 'Id_Peserta.$.fase1': tourObj.fase1}}, {new: true} ,
+            tournament.findOneAndUpdate({"Id_Peserta._id":query}, {$set:{ 'Id_Peserta.$.fase1': tourObj.fase1}}, {new: true} ,
                 (err, tour)=>{
                 if(err){
                     return reject({error: "Error"})
@@ -87,12 +87,12 @@ class tournamentDao {
     static getIdPeserta (query){
         return new Promise((resolve, reject) =>{
             tournament
-                .findById({Id_Peserta:query})
+                .findOneAndUpdate({Id_Peserta: {$elemMatch: {_id: {$in: query}}}}, )
                 .exec((err, tournaments)=>{
                     if(err || !tournaments){
                         return reject ({msg: "Tournament Tidak Ada"})
                     }else{
-                        return resolve({tournaments})
+                        return resolve(tournaments)
                     }
                 })
 
