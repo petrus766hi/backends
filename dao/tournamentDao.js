@@ -87,7 +87,7 @@ class tournamentDao {
     static getIdPeserta (query){
         return new Promise((resolve, reject) =>{
             tournament
-                .findOneAndUpdate({Id_Peserta: {$elemMatch: {_id: {$in: query}}}}, )
+                .findOne({Id_Peserta: {$elemMatch: {_id: {$in: query}}}}, )
                 .exec((err, tournaments)=>{
                     if(err || !tournaments){
                         return reject ({msg: "Tournament Tidak Ada"})
