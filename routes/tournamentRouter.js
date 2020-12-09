@@ -6,7 +6,7 @@ const check = require('../middleware/checkRole')
 router.post('/register', auth,check('panitia'), tournamentContoller.CreateTournament)
 router.get('/tournament', tournamentContoller.getAll)
 router.put('/tournament/:id', tournamentContoller.updateTournament)
-// router.post('/tournament', test)
+router.get('/tournament/:id', tournamentContoller.getTournamentOne)
 
 
 module.exports = router

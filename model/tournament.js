@@ -37,9 +37,9 @@ const TournamentSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId, ref: 'Peserta'
         },
         name: { type: String, },
-        fase1: {type: Number, default:0},
-        fase2: {type: Number, default:0},
-        fase3: {type: Number, default:0},
+        fase1: {type: Number, },
+        fase2: {type: Number, },
+        fase3: {type: Number, },
     }],
     Is_active:{
         type: Boolean,

@@ -191,6 +191,54 @@ class pesertaController {
             })
          }
       }
+      static UpdatePeserta2Tournament (req, res, next){
+         let query = req.params.id
+           let tourObj ={
+               fase1: req.body.fase1,
+               fase2: req.body.fase2,
+               fase3: req.body.fase3
+           }
+           tournamentDao.updatePesertas(query, tourObj)
+           .then((result)=>{
+               res.status(201).json({
+                   success: true,
+                   msg: 'Update Peserta',
+                   data: result
+               })
+           })
+           .catch((err)=>{
+               res.status(500).json({
+                   success: false,
+                   msg: 'Gagal Update Peserta',
+                   data: err
+                })
+           })
+         }
+         static ScorePeserta2Tournament (req, res, next){
+            let query = req.params.id
+              let tourObj ={
+                  fase1: req.body.fase1,
+                  fase2: req.body.fase2,
+                  fase3: req.body.fase3
+              }
+              tournamentDao.updateScore(query, tourObj)
+            //   console.log('xxx', query)
+            //   console.log('xxx', tourObj)
+              .then((result)=>{
+                  res.status(201).json({
+                      success: true,
+                      msg: 'Update Peserta',
+                      data: result
+                  })
+              })
+              .catch((err)=>{
+                  res.status(500).json({
+                      success: false,
+                      msg: 'Gagal Update Peserta',
+                      data: err
+                   })
+              })
+            }
 }
 
 module.exports = pesertaController
