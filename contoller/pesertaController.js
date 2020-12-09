@@ -66,7 +66,8 @@ class pesertaController {
       static changePeserta(req, res, next){
          const id = req.params.id
          const username = {
-            username: req.body
+            username: req.body,
+            email: req.body
          }
             pesertaDao.updatePeserta(id, username)
             .then((result)=>{
@@ -222,8 +223,6 @@ class pesertaController {
                   fase3: req.body.fase3
               }
               tournamentDao.updateScore(query, tourObj)
-            //   console.log('xxx', query)
-            //   console.log('xxx', tourObj)
               .then((result)=>{
                   res.status(201).json({
                       success: true,

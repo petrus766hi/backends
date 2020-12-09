@@ -7,6 +7,7 @@ router.post('/register', auth,check('panitia'), tournamentContoller.CreateTourna
 router.get('/tournament', tournamentContoller.getAll)
 router.put('/tournament/:id', tournamentContoller.updateTournament)
 router.get('/tournament/:id', tournamentContoller.getTournamentOne)
+router.get('/peserta/:id', tournamentContoller.getPeserta)
 
 
 module.exports = router

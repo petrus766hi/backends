@@ -120,6 +120,24 @@ class TournamentController {
              })
         })
     }
+    static getPeserta(req, res, next){
+        let query = req.params.id
+        tournamentDao.getIdPeserta(query)
+        .then((result)=>{
+            res.status(201).json({
+                success: true,
+                msg: 'Get Tournament',
+                data: result
+            })
+        })
+        .catch((err)=>{
+            res.status(500).json({
+                success: false,
+                msg: 'Gagal Get Tournament',
+                data: err
+             })
+        })
+    }
 }
 
 module.exports = TournamentController

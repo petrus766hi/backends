@@ -84,6 +84,20 @@ class tournamentDao {
 
         })
     }
+    static getIdPeserta (query){
+        return new Promise((resolve, reject) =>{
+            tournament
+                .findById({Id_Peserta:query})
+                .exec((err, tournaments)=>{
+                    if(err || !tournaments){
+                        return reject ({msg: "Tournament Tidak Ada"})
+                    }else{
+                        return resolve({tournaments})
+                    }
+                })
+
+        })
+    }
 }
 
 module.exports = tournamentDao
