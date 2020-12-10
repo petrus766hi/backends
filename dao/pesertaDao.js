@@ -33,7 +33,7 @@ class pesertaDao {
     }
     static removePeserta (query){
         return new Promise((resolve, reject)=>{
-            peserta.findById(query,{upsert: true}, (err, peserta)=>{
+            peserta.findByIdAndDelete(query, (err, peserta)=>{
                 if(err){
                     return reject({error: "Error"})
                 }
