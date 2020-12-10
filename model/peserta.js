@@ -5,6 +5,7 @@ var PesertaSchema = new mongoose.Schema({
     email : {type: String, required:true},
     birthdate: { type: Date, required: true},
     phoneNumber: {type: Number, required: true},
+    subdistrict:{type: String, required: true},
     role : {
         type: String,
         type: String,
@@ -23,13 +24,5 @@ var PesertaSchema = new mongoose.Schema({
         data: String,
         default: ''
     },
-    result:[
-        {
-            fase1: Number,
-            fase2: Number,
-            fase3: Number,
-            default:0
-        }
-    ]
 });
 module.exports = mongoose.model('Peserta', PesertaSchema);
