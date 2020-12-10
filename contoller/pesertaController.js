@@ -45,7 +45,7 @@ class pesertaController {
          if(role != 'panitia'){
             return res.status(200).json({msg:'Kamu bukan Panitia, silahkan hubungi panitia nya'})
          }else{
-            pesertaDao.updatePeserta(id, active)
+            pesertaDao.changePeserta(id, active)
             .then((result)=>{
                res.status(201).json({
                    success: true,
