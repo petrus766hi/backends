@@ -5,6 +5,7 @@ const loginController = require('../contoller/loginController')
 const auth = require('../middleware/auth')
 
 router.post('/register', pesertaController.createPeserta)
+router.get('/getId/:id', pesertaController.getPesertaById)
 router.put('/update/:id',auth,pesertaController.updatePeserta)
 router.put('/changepeserta/:id',pesertaController.changePeserta)
 router.post('/login', loginController.LoginPeserta)

@@ -134,6 +134,24 @@ class pesertaController {
             })
         })
       }
+      static getPesertaById(req, res, next){
+         const query = req.params.id
+         pesertaDao.getPesertaId(query)
+         .then((result) =>{
+            res.status(201).json({
+               success: true,
+               msg: 'Get Peserta',
+               data: result
+            })
+         })
+         .catch((err)=>{
+            res.status(500).json({
+               success: false,
+               msg: 'Gagal Get Peserta',
+               data: err
+            })
+        })
+      }
       static async  resetPassword (req, res, next){
          const { password, token } = req.body
          const user = await peserta.findOne({reset_password: token})
