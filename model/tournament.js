@@ -18,7 +18,7 @@ const TournamentSchema = new mongoose.Schema({
         required: true
     },
     UsiaTournament : {
-        type: String,
+        type: Number,
         required: true
     },
     CodeTournament : {
