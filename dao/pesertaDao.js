@@ -31,6 +31,16 @@ class pesertaDao {
             })
         })
     }
+    static removePeserta (query){
+        return new Promise((resolve, reject)=>{
+            peserta.findById(query,{upsert: true}, (err, peserta)=>{
+                if(err){
+                    return reject({error: "Error"})
+                }
+                return resolve(peserta)
+            })
+        })
+    }
 }
 
 module.exports = pesertaDao

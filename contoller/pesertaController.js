@@ -63,6 +63,30 @@ class pesertaController {
          }
       }
 
+      static deletePeserta(req, res, next){
+         const {role} = req.user
+         const id = req.params.id
+         if(role != 'panitia'){
+            return res.status(200).json({msg:'Kamu bukan Panitia, silahkan hubungi panitia nya'})
+         }else{
+            pesertaDao.removePeserta(id)
+            .then((result)=>{
+               res.status(201).json({
+                   success: true,
+                   msg: 'Delete Peserta',
+                   data: result
+               })
+           })
+           .catch((err)=>{
+               res.status(500).json({
+                   success: false,
+                   msg: 'Gagal Delete Peserta',
+                   data: err
+                })
+           })
+         }
+      }
+
       static changePeserta(req, res, next){
          const id = req.params.id
          const obj = {
