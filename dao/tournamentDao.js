@@ -60,7 +60,7 @@ class tournamentDao {
     }
     static updateScore (query, tourObj){
         return new Promise((resolve, reject) =>{
-            tournament.findOneAndUpdate({"Id_Peserta._id":query}, {$set:{ 'Id_Peserta.$.fase1': tourObj.fase1}}, {new: true} ,
+            tournament.findOneAndUpdate({"Id_Peserta._id":query}, {$set:{ 'Id_Peserta.$.fase1': tourObj.fase1, 'Id_Peserta.$.fase2': tourObj.fase2,'Id_Peserta.$.fase3': tourObj.fase3}}, {new: true} ,
                 (err, tour)=>{
                 if(err){
                     return reject({error: "Error"})
