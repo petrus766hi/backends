@@ -40,7 +40,7 @@ class pesertaController {
          const {role} = req.user
          const id = req.params.id
          const active = {
-            is_active_peserta: true
+            is_active_peserta: req.body.is_active_peserta
          }
          if(role != 'panitia'){
             return res.status(200).json({msg:'Kamu bukan Panitia, silahkan hubungi panitia nya'})
