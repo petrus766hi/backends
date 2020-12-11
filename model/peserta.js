@@ -5,7 +5,7 @@ var PesertaSchema = new mongoose.Schema({
     email : {type: String, required:true},
     birthdate: { type: Date, required: true},
     phoneNumber: {type: Number, required: true},
-    subdistrict:{type: String, required: true},
+    subdistrict:{type: String,},
     role : {
         type: String,
         type: String,
