@@ -47,7 +47,7 @@ class tournamentDao {
 
         })
     }
-    static updatePeserta (query, tourObj){
+    static updatePesertas (query, tourObj){
         return new Promise((resolve, reject) =>{
             tournament.findOneAndUpdate({_id:{$in: query}}, {$push: {Id_Peserta: [{id: tourObj.id, name: tourObj.name, fase1: tourObj.fase1, fase2: tourObj.fase2, fase3: tourObj.fase3,}]}}, {upsert: true} ,
                 (err, tour)=>{

@@ -67,6 +67,7 @@ class LoginMaster {
           user : {
             id : userName.id,
             role: userName.role,
+            is_active_peserta: userName.is_active_peserta
           }
         }
         jwt.sign(token, 'jwtSecret', { expiresIn: "10h" }, (err, tokens) =>{
