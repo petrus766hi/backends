@@ -52,7 +52,7 @@ class TournamentController {
     }
     static getAll(req, res, next){
         const currentPage = parseInt(req.query.currentPage) || 1
-        const perPage = parseInt(req.query.perPage) || 5
+        const perPage = parseInt(req.query.perPage) || 10
         let sortBy = req.query.sortBy
             ? req.query.sortBy
             : "asc" ;
