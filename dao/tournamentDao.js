@@ -32,7 +32,7 @@ class tournamentDao {
         return new Promise((resolve, reject) =>{
             tournament
                 .find()
-                .sort({NamaTournament: query.sortBy})
+                .sort({Is_active: query.sortBy})
                 .limit(query.perPage)
                 .skip((query.currentPage - 1)* query.perPage)
                 // .populate('Id_Panitia')
@@ -72,7 +72,7 @@ class tournamentDao {
     static getTournamentId (query){
         return new Promise((resolve, reject) =>{
             tournament
-                .findById(query)
+                .findOne({NamaTournament: query})
                 // .populate('Id_Panitia')
                 .exec((err, tournaments)=>{
                     if(err || !tournaments){
