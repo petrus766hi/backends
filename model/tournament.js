@@ -28,9 +28,13 @@ const TournamentSchema = new mongoose.Schema({
     Id_Panitia : [{
         type: mongoose.Schema.Types.ObjectId, ref: 'User'
     }],
-    Deskripsi : {
+    Informasi : {
         type: String,
-        // required: true
+        required: true
+    },
+    Pendaftaran : {
+        type: String,
+        required: true
     },
     Id_Peserta : [{
         id : {
