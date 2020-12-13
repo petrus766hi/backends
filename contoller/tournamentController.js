@@ -85,7 +85,6 @@ class TournamentController {
     static updateTournament(req, res, next){
         let query = req.params.id
         let tourObj ={
-            Deskripsi : req.body.Deskripsi,
             Is_active : req.body.Is_active
         }
         tournamentDao.updateTournament(query, tourObj)
