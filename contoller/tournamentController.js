@@ -3,7 +3,7 @@ const user = require('../model/user')
 const tournamentDao = require('../dao/tournamentDao')
 class TournamentController {
     static CreateTournament (req, res, next){
-        const { NamaTournament, TypeTournament, JumlahPeserta, UsiaTournament,CodeTournament } = req.body
+        const { NamaTournament, TypeTournament, JumlahPeserta, UsiaTournament,CodeTournament,Informasi,Pendaftaran } = req.body
         const {role, id, subDistirict,id_tournament} = req.user
         console.log('id_tournament', id_tournament)
         const checkTournament = id_tournament.filter((e)=> {
@@ -20,7 +20,10 @@ class TournamentController {
                     UsiaTournament: UsiaTournament,
                     CodeTournament: CodeTournament,
                     Id_Panitia: id,
-                    SubDistrict: subDistirict
+                    SubDistrict: subDistirict,
+                    Informasi: Informasi,
+                    Pendaftaran:Pendaftaran
+
                 })
                 .then((result) =>{
                     res.status(201).json({
