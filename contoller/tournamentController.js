@@ -5,10 +5,10 @@ class TournamentController {
     static CreateTournament (req, res, next){
         const { NamaTournament, TypeTournament, JumlahPeserta, UsiaTournament,CodeTournament,Informasi,Pendaftaran } = req.body
         const {role, id, subDistirict,id_tournament} = req.user
-        console.log('id_tournament', id_tournament)
         const checkTournament = id_tournament.filter((e)=> {
           return e.CodeTournament === req.body.CodeTournament
         }).length
+        console.log('xxx',checkTournament)
         if(checkTournament > 0){
             return res.send({msg: 'Tournament Sudah Terdaftar'})
         }else{
