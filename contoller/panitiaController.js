@@ -98,6 +98,29 @@ class userController {
         })
       }
    }
+   static deletePanitia(req, res, next){
+      const {role} = req.user
+      const id = req.params.id
+      if(role != 'master'){
+         return res.status(200).json({msg:'Kamu bukan Panitia, silahkan hubungi panitia nya'})
+      }else{
+         panitiaDao.removePanitia(id)
+         .then((result)=>{
+            res.status(201).json({
+                success: true,
+                msg: 'Delete Panitia',
+                data: result
+            })
+        })
+        .catch((err)=>{
+            res.status(500).json({
+                success: false,
+                msg: 'Gagal Delete Panitia',
+                data: err
+             })
+        })
+      }
+   }
 }
 
 module.exports = userController

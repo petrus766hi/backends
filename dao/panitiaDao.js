@@ -31,6 +31,16 @@ class panitiaDao {
             })
         })
     }
+    static removePanitia (query){
+        return new Promise((resolve, reject)=>{
+            panitia.findByIdAndDelete(query, (err, panitia)=>{
+                if(err){
+                    return reject({error: "Error"})
+                }
+                return resolve(panitia)
+            })
+        })
+    }
 }
 
 module.exports = panitiaDao
