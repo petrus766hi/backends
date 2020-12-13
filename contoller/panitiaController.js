@@ -102,7 +102,7 @@ class userController {
       const {role} = req.user
       const id = req.params.id
       if(role != 'master'){
-         return res.status(200).json({msg:'Kamu bukan Panitia, silahkan hubungi panitia nya'})
+         return res.status(200).json({msg:'Kamu bukan Master, silahkan hubungi Master nya'})
       }else{
          panitiaDao.removePanitia(id)
          .then((result)=>{
