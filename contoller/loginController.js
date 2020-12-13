@@ -25,7 +25,8 @@ class LoginMaster {
               id : userName.id,
               role: userName.role,
               subDistirict: userName.subDistirict,
-              id_tournament: userName.id_tournament
+              id_tournament: userName.id_tournament,
+              is_active_peserta: userName.is_active_peserta
             }
           }
           jwt.sign(token, 'jwtSecret', { expiresIn: "10h" }, (err, tokens) =>{
