@@ -77,12 +77,10 @@ class userController {
       const active = {
          is_active_peserta: req.body.is_active_peserta
       }
-      console.log('xxx', role)
       if(role != 'master'){
          return res.status(200).json({msg:'Kamu bukan Master, silahkan hubungi panitia nya'})
       }else{
          panitiaDao.updatePanitiaId(id, active)
-
          .then((result)=>{
             console.log('ress', result)
             res.status(201).json({
