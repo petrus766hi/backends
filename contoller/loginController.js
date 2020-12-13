@@ -68,6 +68,7 @@ class LoginMaster {
           user : {
             id : userName.id,
             role: userName.role,
+            username: userName.username,
             is_active_peserta: userName.is_active_peserta
           }
         }

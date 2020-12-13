@@ -192,10 +192,9 @@ class pesertaController {
       }
       static registerPeserta2Tournament (req, res, next){
       let query = req.params.id
-      console.log(req.user.id)
         let tourObj ={
             id : req.user.id,
-            name : req.body.name,
+            name : req.user.username,
             fase1: req.body.fase1,
             fase2: req.body.fase2,
             fase3: req.body.fase3
