@@ -37,7 +37,7 @@ class TournamentController {
                               id_tournament: result._id
                             }
                         },
-                        {new: true}
+                        {upsert: true}
                     )
 
                 })
@@ -55,7 +55,7 @@ class TournamentController {
     }
     static getAll(req, res, next){
         const currentPage = parseInt(req.query.currentPage) || 1
-        const perPage = parseInt(req.query.perPage) || 10
+        const perPage = parseInt(req.query.perPage) || 20
         let sortBy = req.query.sortBy
             ? req.query.sortBy
             : "asc" ;
