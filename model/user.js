@@ -4,6 +4,7 @@ var UserSchema = new mongoose.Schema({
     password : {type: String, required:true},
     email : {type: String, required:true},
     subDistirict: {type: String, require: true},
+    register:{type: Boolean, default:false},
     role : {
         type: String,
         enum : ['master','panitia'],
