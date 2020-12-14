@@ -98,6 +98,29 @@ class userController {
         })
       }
    }
+   static panitiaRegister(req, res, next){
+      const id = req.params.id
+      const obj = {
+         register: req.body.register
+      }
+         panitiaDao.updatePanitiaId(id, obj)
+         .then((result)=>{
+            console.log('ress', result)
+            res.status(201).json({
+                success: true,
+                msg: 'Update Panitia',
+                data: result
+            })
+        })
+        .catch((err)=>{
+            res.status(500).json({
+                success: false,
+                msg: 'Gagal Update Panitia',
+                data: err
+             })
+        })
+      }
+   }
    static deletePanitia(req, res, next){
       const {role} = req.user
       const id = req.params.id
