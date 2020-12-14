@@ -17,5 +17,6 @@ router.put('/changepassword', pesertaController.changePassword)
 router.get('/getall', pesertaController.getAll)
 router.put('/updatepeserta/:id', auth, checkStatus('true'),pesertaController.registerPeserta2Tournament)
 router.put('/updatescore/:id', pesertaController.ScorePeserta2Tournament)
+router.put('/updateregister/:id', pesertaController.UpdatePesertaRegister)
 
 module.exports = router

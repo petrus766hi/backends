@@ -24,5 +24,9 @@ var PesertaSchema = new mongoose.Schema({
         data: String,
         default: ''
     },
+    register:{
+        type: Boolean,
+        default: false
+    }
 });
 module.exports = mongoose.model('Peserta', PesertaSchema);
