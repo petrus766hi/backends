@@ -179,7 +179,7 @@ class pesertaController {
       static UpdatePesertaRegister(req, res, next){
          const query = req.params.id
          const data = {
-            register: true
+            register: req.body.register
          }
          pesertaDao.changePeserta(query, data)
          .then((result) =>{
