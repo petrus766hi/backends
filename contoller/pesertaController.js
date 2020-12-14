@@ -132,7 +132,7 @@ class pesertaController {
             from: `Petrus`,
             to: email ,
             subject: 'Reset Password',
-            html:`<a href="http://localhost:4200/reset_password/${token}">Masuk gan </a>`
+            html:`<a href="https://tujuhbelas.herokuapp.com/reset_password/${token}">Masuk gan </a>`
          };
          sendEmail(message)
 
