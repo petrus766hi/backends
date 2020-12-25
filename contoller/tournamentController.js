@@ -8,7 +8,6 @@ class TournamentController {
         const checkTournament = id_tournament.filter((e)=> {
           return e.CodeTournament === req.body.CodeTournament
         }).length
-        console.log('xxx',checkTournament)
         if(checkTournament > 0){
             return res.send({msg: 'Tournament Sudah Terdaftar'})
         }else{
@@ -124,9 +123,10 @@ class TournamentController {
     }
     static getPeserta(req, res, next){
         let query = req.params.id
+        console.log(query)
         tournamentDao.getIdPeserta(query)
         .then((result)=>{
-            res.status(201).json({
+            res.status(200).json({
                 success: true,
                 msg: 'Get Tournament',
                 data: result.Id_Peserta[0]

@@ -1,4 +1,4 @@
-const peserta = require('../model/peserta')
+const user = require('../model/user')
 const bcrypt = require ('bcryptjs');
 const saltRounds = 10;
 const pesertaDao = require('../dao/pesertaDao');
@@ -10,7 +10,7 @@ class pesertaController {
       static createPeserta(req, res, next) {
          bcrypt.hash(req.body.password, saltRounds, function(err , hash){
            const {username, email, roles, birthdate, phoneNumber} = req.body
-           peserta.create({
+           user.create({
             username : username,
             password : hash,
             email : email,

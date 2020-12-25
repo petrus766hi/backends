@@ -22,7 +22,7 @@ const TournamentSchema = new mongoose.Schema({
         required: true
     },
     CodeTournament : {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId, ref:'Lomba',
         required: true
     },
     Id_Panitia : [{

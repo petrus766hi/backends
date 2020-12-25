@@ -17,7 +17,7 @@ router.get('/getId/:id', pesertaController.getPesertaById);
 router.put('/update/:id', auth, pesertaController.updatePeserta);
 router["delete"]('/delete/:id', auth, pesertaController.deletePeserta);
 router.put('/changepeserta/:id', pesertaController.changePeserta);
-router.post('/login', loginController.LoginPeserta);
+// router.post('/login', loginController.LoginPeserta);
 router.put('/forgotpassword', pesertaController.forgotPassword);
 router.put('/resetpassword', pesertaController.resetPassword);
 router.put('/changepassword', pesertaController.changePassword);
