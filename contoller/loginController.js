@@ -6,7 +6,6 @@ const User = require ('../model/user');
 
 class LoginMaster {
     static async Login (req,res) {
-      let a = 0
         const errors = validationResult (req);
         if (!errors.isEmpty ()) {
           return res.status (400).json ({errors: errors.array()});
