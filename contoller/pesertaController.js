@@ -278,13 +278,15 @@ class pesertaController {
            })
          }
          static ScorePeserta2Tournament (req, res, next){
-            let query = req.params.id
-              let tourObj ={
+              let dataObj =[
+                 {
+                  id : req.body.id,
                   fase1: req.body.fase1,
                   fase2: req.body.fase2,
                   fase3: req.body.fase3
-              }
-              tournamentDao.updateScore(query, tourObj)
+                 }
+            ]
+              tournamentDao.updateScore(dataObj)
               .then((result)=>{
                   res.status(201).json({
                       success: true,

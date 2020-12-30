@@ -14,15 +14,12 @@ class LoginMaster {
         try{
           const userName = await User.findOne({email})
           if(!userName){
-
             return res.status(400).json({error: [{msg: "Invalid Username/Email"}]})
           }
           const matchPassword = await bcrypt.compare(password, userName.password)
           if(!matchPassword){
-            const failed = await User.update({email}, {$push: {login_failed: 1}}, {new:true})
-            // return res.status(400).json({error: [{msg: "Invalid Username/Email"}]})
-            console.log('xxx',failed )
-            console.log('zzz', a++)
+            const failed = await User.update({email}, {$push: {login_failed: Date.now()}}, {new:true})
+            return res.status(400).json({error: [{msg: "Invalid Username/Email"}]})
           }
           const token = {
             user : {
@@ -33,6 +30,7 @@ class LoginMaster {
               is_active_peserta: userName.is_active_peserta
             }
           }
+          const success =  await User.update({email}, {$unset: {login_failed: []}}, {multi:true})
           jwt.sign(token, 'jwtSecret', { expiresIn: "10h" }, (err, tokens) =>{
             if(err){
               res.json({

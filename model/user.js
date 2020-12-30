@@ -15,7 +15,22 @@ var UserSchema = new mongoose.Schema({
         validate:[validateEmail, 'Pastikan email anda dengan benar']
     },
     subDistirict: {type: String, require: true},
-    birthdate: { type: Date, required: true},
+    phoneNumber: {
+        type: Number,
+        required: function(){
+            if(this.role == 'peserta'){
+                return true
+            }
+        }
+    },
+    birthdate: {
+        type: Date,
+        required: function(){
+            if(this.role == 'peserta'){
+                return true
+            }
+        }
+    },
     role : {
         type: String,
         enum : ['master','panitia', 'peserta'],
@@ -26,7 +41,13 @@ var UserSchema = new mongoose.Schema({
     ],
     is_active_peserta:{
         type: Boolean,
-        default: false
+        default: function(){
+            if(this.role == 'panitia'){
+                return true
+            }else{
+                return false
+            }
+        }
     },
     reset_password:{
         data: String,
@@ -36,10 +57,18 @@ var UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    login_failed:[{
-        type: Number,
-        default: 0
-    }],
+    login_failed:[
+        {
+            type: Number,
+            default: Date.now(),
 
-});
+        },
+    ],
+    is_group :[
+        {
+            name: String,
+            handphone: Number
+        }
+    ]
+}, {timestamps: true});
 module.exports = mongoose.model('User', UserSchema);

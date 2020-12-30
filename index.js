@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 mongoDbConnection()
 app.use(cors())
 app.use(routes)
+
 app.get('/', (req, res, next) => {
     res.send('Hello World')
 })

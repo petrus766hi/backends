@@ -4,5 +4,5 @@ var LombaSchema = new mongoose.Schema({
     nama: {type: String, required: true},
     code:{type: String, required: true}
 
-});
+},{timestamps: true});
 module.exports = mongoose.model('Lomba', LombaSchema);

@@ -58,15 +58,20 @@ class tournamentDao {
             })
         })
     }
-    static updateScore (query, tourObj){
+    static updateScore (data){
         return new Promise((resolve, reject) =>{
-            tournament.findOneAndUpdate({"Id_Peserta._id":query}, {$set:{ 'Id_Peserta.$.fase1': tourObj.fase1, 'Id_Peserta.$.fase2': tourObj.fase2,'Id_Peserta.$.fase3': tourObj.fase3}}, {new: true} ,
+            console.log('xxx', data)
+            data.forEach(element => {
+               tournament.findOneAndUpdate({"Id_Peserta._id":element.id}, {$set:{ 'Id_Peserta.$.fase1': element.fase1, 'Id_Peserta.$.fase2': element.fase2,'Id_Peserta.$.fase3': element.fase3}}, {upsert: true} ,
                 (err, tour)=>{
                 if(err){
                     return reject({error: "Error"})
                 }
-                return resolve(tour)
-            })
+                    console.log('xxx', tour)
+                    return resolve(tour)
+                })
+            });
+
         })
     }
     static getTournamentId (query){
